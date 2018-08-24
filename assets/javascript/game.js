@@ -74,11 +74,11 @@ function updateGame() {
   document.getElementById("wordAnswer").innerHTML = output.join(" ");
    
   if(letters.toString() == output.toString()) {
-    wins++
+    wins++;
     document.getElementById("wins").innerHTML = wins;
     play();
   } else if (guessesLeft===0) {
-      losses++
+      losses++;
       document.getElementById("losses").innerHTML = losses;
       gameStart();
   }
@@ -94,7 +94,7 @@ document.onkeypress = function(event) {
 
   
 function play(){
-  if (word=="apple"){
+  if (word =="apple"){
     var picture = "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYeRnv_BBv1jzop1BXj_nrdUHLmzLLxD-5Vivc0oy8iCtVpbiUEQ'>"
     document.querySelector("#picture").innerHTML = picture; 
     gameStart();
