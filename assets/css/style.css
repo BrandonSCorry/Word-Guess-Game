@@ -19,7 +19,7 @@ body {
 	margin: 1em auto;
 	height: 100%; 
 	padding-top:0.5em;
-	background-color: #f0f0f0;
+	background-color: #fff;
 	text-align: center;
   opacity: 0.95;
 }
@@ -43,6 +43,7 @@ h2 {
 img {
 	height: 50%;
 	width: 50%;
+	opacity: 0.8;
 
 }
 

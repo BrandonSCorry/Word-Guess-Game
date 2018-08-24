@@ -1,4 +1,5 @@
-//A lesson in frustration volume 1
+//A lesson in frustration volume 1 JS
+// you can't .appendChild strings without way too many variables
 
 //global variables
   var wordArray = ["apple", "banana", "blueberry", "raspberry", "strawberry", "watermelon", "kiwi", "cantaloupe", "pear", "tomato", "blackberry", "cherry"];
@@ -23,11 +24,11 @@
 
     // console.log(num);
     // console.log(letters);
-    // console.log(word)
+    // console.log(word);
 
     //number of guesses, defaulted to 10
     guessesLeft = 10;
-    //store wrong letters in array, need to update this so you can't guess the same key twice
+    //store wrong letters in array
     wrongLetters = [];
     output = [];
     //loop to get placeholder _ equal to number of letters in word
@@ -41,7 +42,7 @@
     document.getElementById("losses").innerHTML = losses;
     document.getElementById("guessesLeft").innerHTML = guessesLeft;
 
-  };
+  }
     
 //checking if the user input letter matches a letter in the word and outputs to replace placeholder
 function checkAnswer (letter) {
@@ -50,44 +51,50 @@ function checkAnswer (letter) {
 
   for(var j = 0; j < num; j++) {
 
-    if (letter == word[j]) {
+    if (letter === word[j]) {
       isLetterInWord = true;
     }
   }
  
   if (isLetterInWord) {
+
     for(var j = 0; j < num; j++) {
-      if (word[j] == letter) {
+
+      if (word[j] === letter) {
         output[j] = letter;
         //console.log(output)
       }         
     }
+    //TODO: disallow same wrong letter twice?
   } else {
       wrongLetters.push(letter);
       guessesLeft--;
   }
   
-};
+}
 
 //starting game function
 gameStart();
 
 //update
+//TODO: clear wrongLetters after win/lose before keypress
 function updateGame() {
   document.getElementById("guessesLeft").innerHTML = guessesLeft;
   document.getElementById("answersGuessed").innerHTML = wrongLetters;
   document.getElementById("wordAnswer").innerHTML = output.join(" ");
    
-  if(letters.toString() == output.toString()) {
+  if(letters.toString() === output.toString()) {
+    //TODO: if word guess correct, remove that word from array until it loops
     wins++;
     document.getElementById("wins").innerHTML = wins;
     play();
   } else if (guessesLeft===0) {
+    //TODO: if guess wrong, show user answer?
       losses++;
       document.getElementById("losses").innerHTML = losses;
       gameStart();
   }
-};
+}
 
 //on key press event listener
 document.onkeypress = function(event) {
@@ -98,59 +105,59 @@ document.onkeypress = function(event) {
 };
 
 //display image of the answer if guessed correctly
+//TODO: put this in array and match with wordArray[x]
 function play(){
-  if (word =="apple"){
+  if (word ==="apple"){
     var picture = "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYeRnv_BBv1jzop1BXj_nrdUHLmzLLxD-5Vivc0oy8iCtVpbiUEQ'>"
-    document.querySelector("#picture").innerHTML = picture; 
+    document.querySelector("#picture").innerHTML = picture;
     gameStart();
-  } else if (word == "banana") {
+  } else if (word === "banana") {
       var picture = "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSezjubUIBGyVTeGdDwggPprmOXG13R692-k9YAhjXUtOvo0xoA_w'>"
-      document.querySelector("#picture").innerHTML = picture;               
+      document.querySelector("#picture").innerHTML = picture;
       gameStart();
-  } else if (word == "blueberry") {
+  } else if (word === "blueberry") {
       var picture = "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqgft58ef7ecOSSvZyFh8yBB-kTGrnX0wyPA7eO0qJFIbbNv69'>"
-      document.querySelector("#picture").innerHTML = picture; 
+      document.querySelector("#picture").innerHTML = picture;
       gameStart();
-  } else if (word == "strawberry") {
+  } else if (word === "strawberry") {
       var picture = "<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/PerfectStrawberry.jpg/220px-PerfectStrawberry.jpg'>"
-      document.querySelector("#picture").innerHTML = picture; 
+      document.querySelector("#picture").innerHTML = picture;
       gameStart(); 
-  } else if (word == "raspberry") {
+  } else if (word === "raspberry") {
       var picture = "<img src='http://www.fruitinhand.com/of-admin/wp-content/uploads/2012/10/fruit_raspberries.jpg'>"
       document.querySelector("#picture").innerHTML = picture;
       gameStart();
-  } else if (word == "watermelon") {
+  } else if (word === "watermelon") {
     var picture = "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN5visA6CqtYfldN8eWZRN5kpNhoaOviAppBC36kqSH-sAXIajRQ'>"
     document.querySelector("#picture").innerHTML = picture;
     gameStart();
-  } else if (word == "kiwi") {
+  } else if (word === "kiwi") {
     var picture = "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWI_Ym_7BsfxIEV9d8dC-OOJlj0Mt127yQBomsfP0WsNY5Keil1w'>"
     document.querySelector("#picture").innerHTML = picture;
     gameStart();
-  } else if (word == "cantaloupe") {
+  } else if (word === "cantaloupe") {
     var picture = "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcq0k3vKSx3k7aomi7L6hmyGFoka87pi4lA2fM02HCWcGiYGWGTQ'>"
     document.querySelector("#picture").innerHTML = picture;
     gameStart();
-  } else if (word == "pear") {
+  } else if (word === "pear") {
     var picture = "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkW7pP7iUeo4BKT2EjO8a-r9oQOdz5yeJaXxWhSXomr5UVJ9zV'>"
     document.querySelector("#picture").innerHTML = picture;
     gameStart();
-  } else if (word == "tomato") {
+  } else if (word === "tomato") {
     var picture = "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG8W9hq2j_-Im16Kf5jGdtedQaA1QHxfDRRGY9lUGf-rdMSb44'>"
     document.querySelector("#picture").innerHTML = picture;
     gameStart();
-  } else if (word == "blackberry") {
+  } else if (word === "blackberry") {
     var picture = "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR82KywKDj9BHpJtpsUpTDodZr_j1tlQflsj9dhD5h-QF0QTaKu'>"
     document.querySelector("#picture").innerHTML = picture;
     gameStart();
-  } else if (word == "cherry") {
+  } else if (word === "cherry") {
     var picture = "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX05K0jXVdhvD_K33eBEL-bT-G63WPp2WYo9fuATuUEUYzGRARzg'>"
     document.querySelector("#picture").innerHTML = picture;
     gameStart();
   }
 
-
-};
+}
 //el fin
 
 
