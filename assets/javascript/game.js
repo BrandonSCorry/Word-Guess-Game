@@ -64,7 +64,7 @@ function checkAnswer (letter) {
   
 };
 
-//starting game
+//starting game function
 gameStart();
 
 //update
@@ -146,7 +146,7 @@ function play(){
 
 
 };
-// //end
+//el fin
 
 
   
