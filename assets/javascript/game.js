@@ -14,23 +14,28 @@
 
 //game start function
   function gameStart() {
-    word = wordArray[Math.floor(Math.random() * wordArray.length)];
+    //getting random word from wordArray
+    word = wordArray[Math.floor(Math.random() * wordArray.length)]
+    //split into letters array
     letters = word.split("");
+    //get letters array length
     num = letters.length;
 
     // console.log(num);
     // console.log(letters);
     // console.log(word)
 
+    //number of guesses, defaulted to 10
     guessesLeft = 10;
+    //store wrong letters in array, need to update this so you can't guess the same key twice
     wrongLetters = [];
     output = [];
-
+    //loop to get placeholder _ equal to number of letters in word
     for(var i = 0; i < num; i++) {
       output.push("_")
       //console.log(output)
     }
-           
+    //show variables on HTML page, output.join puts the array into a string and adds spaces " "
     document.getElementById("wordAnswer").innerHTML = output.join(" ");
     document.getElementById("wins").innerHTML = wins;
     document.getElementById("losses").innerHTML = losses;
@@ -38,7 +43,7 @@
 
   };
     
-//checking the user input against the chosen word from array
+//checking if the user input letter matches a letter in the word and outputs to replace placeholder
 function checkAnswer (letter) {
 
   var isLetterInWord = false;
@@ -84,7 +89,7 @@ function updateGame() {
   }
 };
 
-//on key press listener
+//on key press event listener
 document.onkeypress = function(event) {
   var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
   //console.log(userGuess);
@@ -92,7 +97,7 @@ document.onkeypress = function(event) {
   updateGame();
 };
 
-  
+//display image of the answer if guessed correctly
 function play(){
   if (word =="apple"){
     var picture = "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYeRnv_BBv1jzop1BXj_nrdUHLmzLLxD-5Vivc0oy8iCtVpbiUEQ'>"
