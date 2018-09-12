@@ -1,4 +1,4 @@
 # Word-Guess-Game
 ------------------------
 
-vanilla JS, jQuery word guessing browser game
+vanilla JS word guessing browser game
